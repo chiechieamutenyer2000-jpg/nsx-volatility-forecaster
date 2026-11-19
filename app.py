@@ -21,7 +21,8 @@ DEFAULT = Path(__file__).parent / "data" / "FTSE_NSX_INDEX_1.csv"
 st.set_page_config(page_title="NSX Volatility Forecaster", layout="wide")
 
 st.title("NSX Volatility Forecaster")
-st.caption("Honours project prototype: GARCH(1,1), EGARCH(1,1,1), EWMA and LSTM. Built on the FTSE/NSX Overall Index; works on any price or return series. "
+st.caption("Working prototype for the Honours project: Volatility Forecasting on a Frontier Market: "
+           "GARCH, EGARCH and LSTM on the Namibian Stock Exchange Index (Festus T. Amutenya, UNAM). "
            "A research tool, not investment advice.")
 
 # ---------------------------------------------------------------- data
