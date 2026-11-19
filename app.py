@@ -28,6 +28,8 @@ st.caption("Working prototype for the Honours project: Volatility Forecasting on
 # ---------------------------------------------------------------- data
 with st.sidebar:
     st.header("1. Data")
+               st.info("Privacy: uploaded files are processed in memory only. The parsed copy is discarded after 15 minutes "
+            "at most, and nothing is written to disk or a database. Do not upload personal or confidential data to this public demo.")
     _opts = ["Upload my own file", "Simulated example"] + (["NSX example (bundled)"] if DEFAULT.exists() else [])
     source = st.radio("Data source", _opts, index=len(_opts) - 1 if DEFAULT.exists() else 1)
     up = None
@@ -40,7 +42,7 @@ with st.sidebar:
         sim_seed = st.number_input("Random seed", 1, 9999, 1)
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner=False, ttl=900, max_entries=3)
 def _table(raw: bytes | None, name: str, which: str, n: int, seed: int):
     if which == "up":
         return read_table(io.BytesIO(raw), name)
