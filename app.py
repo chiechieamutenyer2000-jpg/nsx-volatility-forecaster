@@ -28,11 +28,8 @@ st.caption("Working prototype for the Honours project: Volatility Forecasting on
 # ---------------------------------------------------------------- data
 with st.sidebar:
     st.header("1. Data")
-               st.info("Privacy: uploaded files are processed in memory only. The parsed copy is discarded after 15 minutes "
+    st.info("Privacy: uploaded files are processed in memory only. The parsed copy is discarded after 15 minutes "
             "at most, and nothing is written to disk or a database. Do not upload personal or confidential data to this public demo.")
-    _opts = ["Upload my own file", "Simulated example"] + (["NSX example (bundled)"] if DEFAULT.exists() else [])
-    source = st.radio("Data source", _opts, index=len(_opts) - 1 if DEFAULT.exists() else 1)
-    up = None
     if source.startswith("Upload"):
         up = st.file_uploader("CSV or Excel file with dates and prices (or returns)", type=["csv", "txt", "xlsx", "xls"])
         st.caption("Any column names, separators and date formats. Daily, weekly or monthly. "
